@@ -13,7 +13,7 @@ String lastName
 Byte age
 Архитектура приложения создана с опорой на паттерн проектирования MVC (частично, у нас не WEB приложение)
 
-Ознакомиться с паттерном можно здесь
+Ознакомиться с паттерном можно [здесь](https://pro-java.ru/patterny-proektirovaniya-java/chto-takoe-pattern-proektirovaniya-mvc-v-java/)
 
  
 
