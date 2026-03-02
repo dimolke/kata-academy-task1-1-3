@@ -40,7 +40,7 @@ public class UserDaoJDBCImpl implements UserDao {
         """),
         //DML
         SAVE_TABLE(() -> """
-                    INSERT INTO users(name, 
+                    INSERT INTO users(name,
                                       lastname, 
                                       age) 
                     VALUES (?, ?, ?);

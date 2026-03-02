@@ -2,6 +2,11 @@ package jm.task.core.jdbc;
 
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
+import jm.task.core.jdbc.util.PropertiesUtil;
+import jm.task.core.jdbc.util.Util;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Environment;
 
 public class Main {
     private static final UserService userService = new UserServiceImpl();
@@ -11,22 +16,34 @@ public class Main {
 
 //         Из задания https://platform.kata.academy/user/courses/111/1/1/3
 //         1. Создание таблицы User(ов)
-        createUsersTask1();
+//        createUsersTask1();
 
 //         2. Добавление 4 User(ов) в таблицу с данными на свой выбор.
 //         После каждого добавления должен быть вывод в консоль
 //         (User с именем — name добавлен в базу данных)
-        addUsersTask2();
+//        addUsersTask2();
 
 //        3. Получение всех User из базы и вывод в консоль
 //        (должен быть переопределен toString в классе User)
-        popUpAllUsersTask3();
+//        popUpAllUsersTask3();
 
 //        4. Очистка таблицы User(ов)
-        truncateUserTableTask4();
+//        truncateUserTableTask4();
 
 //        5. Удаление таблицы
-        dropUserTableTask5();
+//        dropUserTableTask5();
+
+        SessionFactory sessionFactory = Util.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        if (session != null) {
+            System.out.println("Session is open");
+        }
+
+        if (session != null) {
+            session.close();
+            System.out.println("Session is close");
+        }
+
     }
 
     private static void createUsersTask1() {

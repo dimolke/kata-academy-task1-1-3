@@ -1,14 +1,26 @@
+/**
+ *  History revision:
+ *  2.0.0 - added hibernate usage.
+ *  1.0.0 - first release, using JDBC
+ */
+
 package jm.task.core.jdbc.service;
 
 import jm.task.core.jdbc.dao.UserDao;
+import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.model.User;
 
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
+    // used in task 1.1.3
+    // deprecated since task 1.1.4 (commented = "true")
+//    private final UserDao userDao = UserDaoJDBCImpl.getInstance();
 
-    private final UserDao userDao = UserDaoJDBCImpl.getInstance();
+
+   private final UserDao userDao =  new UserDaoHibernateImpl();
+
 
     public void createUsersTable() {
         userDao.createUsersTable();
