@@ -3,7 +3,6 @@
   <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.53">
     <root id="1">
       <DefaultAuthPlugin>caching_sha2_password</DefaultAuthPlugin>
-      <DefaultCasing>lower/lower</DefaultCasing>
       <DefaultEngine>InnoDB</DefaultEngine>
       <DefaultTmpEngine>InnoDB</DefaultTmpEngine>
       <ServerVersion>8.0.44</ServerVersion>
@@ -935,7 +934,7 @@
       <AutoIntrospectionLevel>3</AutoIntrospectionLevel>
       <Current>1</Current>
       <LastIntrospectionLevel>3</LastIntrospectionLevel>
-      <LastIntrospectionLocalTimestamp>2025-11-27.17:06:28</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2026-03-03.16:26:08</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <user id="297" parent="1" name="mysql.infoschema">
@@ -956,25 +955,25 @@
     <table id="301" parent="296" name="users">
       <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
-      <CollationName>utf8mb4_general_ci</CollationName>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
     <column id="302" parent="301" name="id">
       <AutoIncrement>1</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StoredType>bigint unsigned|0s</StoredType>
+      <StoredType>bigint|0s</StoredType>
     </column>
-    <column id="303" parent="301" name="name">
+    <column id="303" parent="301" name="age">
       <Position>2</Position>
-      <StoredType>varchar(100)|0s</StoredType>
+      <StoredType>tinyint|0s</StoredType>
     </column>
     <column id="304" parent="301" name="lastname">
       <Position>3</Position>
-      <StoredType>varchar(100)|0s</StoredType>
+      <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="305" parent="301" name="age">
+    <column id="305" parent="301" name="name">
       <Position>4</Position>
-      <StoredType>tinyint|0s</StoredType>
+      <StoredType>varchar(255)|0s</StoredType>
     </column>
     <index id="306" parent="301" name="PRIMARY">
       <ColNames>id</ColNames>

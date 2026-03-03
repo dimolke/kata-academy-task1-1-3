@@ -13,9 +13,6 @@ public class UserDaoHibernateImpl implements UserDao {
         String getQuery();
     }
 
-    // according to issue#2 of mentor:
-    // to change overlap sql statements in methods
-    // introduced class enum and used lambda to implement this issue
     private enum Queries {
         // DDL
         CREATE_TABLE(() -> """
@@ -75,7 +72,7 @@ public class UserDaoHibernateImpl implements UserDao {
             var session = Util.getSessionFactory().openSession();
             session.beginTransaction();
 
-            session.createSQLQuery(Queries.CREATE_TABLE.getQuery())
+            session.createNativeQuery(Queries.CREATE_TABLE.getQuery())
                     .addEntity(User.class)
                     .executeUpdate();
 
@@ -90,7 +87,7 @@ public class UserDaoHibernateImpl implements UserDao {
         try (var session = Util.getSessionFactory()
                     .openSession();) {
             session.beginTransaction();
-            session.createSQLQuery(Queries.DROP_SQL.getQuery())
+            session.createNativeQuery(Queries.DROP_SQL.getQuery())
                     .executeUpdate();
 
             session.getTransaction().commit();
@@ -140,7 +137,7 @@ public class UserDaoHibernateImpl implements UserDao {
             session.beginTransaction();
 
             List<User> users = session.
-                    createQuery(Queries.FIND_ALL_SQL.getQuery(), User.class)
+                    createNativeQuery(Queries.FIND_ALL_SQL.getQuery(), User.class)
                     .list();
 
             session.getTransaction().commit();
@@ -158,7 +155,7 @@ public class UserDaoHibernateImpl implements UserDao {
                 .openSession()) {
          session.beginTransaction();
 
-         session.createSQLQuery(Queries.DELETE_SQL.getQuery())
+         session.createNativeQuery(Queries.DELETE_SQL.getQuery())
                  .executeUpdate();
 
          session.getTransaction().commit();

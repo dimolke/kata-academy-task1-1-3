@@ -67,7 +67,7 @@ public class Util {
     }
 
     public static Connection getConnection() {
-        try{
+        try {
             return pool.take();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
@@ -92,8 +92,8 @@ public class Util {
                     Proxy.newProxyInstance(Util.class.getClassLoader(),
                             new Class[]{Connection.class},
                             (proxy, method, args) -> method.getName().equals("close")
-                            ? pool.add((Connection) proxy)
-                            : method.invoke(connection, args));
+                                    ? pool.add((Connection) proxy)
+                                    : method.invoke(connection, args));
             pool.add(proxyConnection);
             sourceConnections.add(connection);
         }
@@ -117,8 +117,9 @@ public class Util {
         }
     }
 
+
 //    =================== Configure for Hibernate ===================
-//    for task 1.1.4
+//       --------------------- for  task 1.1.4 -------------------
 
     private static void initHibernate() {
 
@@ -137,8 +138,9 @@ public class Util {
 
 //            properties.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
 
-            //Автоматическое создание схемы данных. Возможные значения: validate, update, create, create-drope, none
-            properties.put(Environment.HBM2DDL_AUTO,"validate");
+            // Автоматическое создание схемы данных. Возможные значения: validate, update, create, create-drope, none
+            // ВНИМАНИЕ!!! Выбросит исключение если  будет стоять значение validate, а таблица удалена
+            properties.put(Environment.HBM2DDL_AUTO,"create");
 
             // connection pool settings for Hibernate
             properties.put(Environment.POOL_SIZE, PropertiesUtil.get(POOL_SIZE_KEY));

@@ -9,14 +9,15 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Environment;
 
 public class Main {
-    private static final UserService userService = new UserServiceImpl();
+
+     private static final UserService userService = new UserServiceImpl();
 
     public static void main(String[] args) {
-        // реализуйте алгоритм здесь:
+
 
 //         Из задания https://platform.kata.academy/user/courses/111/1/1/3
 //         1. Создание таблицы User(ов)
-//        createUsersTask1();
+        createUsersTask1();
 
 //         2. Добавление 4 User(ов) в таблицу с данными на свой выбор.
 //         После каждого добавления должен быть вывод в консоль
@@ -33,16 +34,6 @@ public class Main {
 //        5. Удаление таблицы
 //        dropUserTableTask5();
 
-        SessionFactory sessionFactory = Util.getSessionFactory();
-        Session session = sessionFactory.openSession();
-        if (session != null) {
-            System.out.println("Session is open");
-        }
-
-        if (session != null) {
-            session.close();
-            System.out.println("Session is close");
-        }
 
     }
 

@@ -12,6 +12,7 @@ import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
 
+
     //declare singleton UserDao
     private static UserDao INSTANCE = null;
 
