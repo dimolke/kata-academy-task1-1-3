@@ -1,10 +1,8 @@
 package jm.task.core.jdbc.dao;
 
-import com.mysql.cj.x.protobuf.MysqlxPrepare;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
 
-import java.awt.desktop.QuitEvent;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -42,7 +40,7 @@ public class UserDaoJDBCImpl implements UserDao {
         //DML
         SAVE_TABLE(() -> """
                     INSERT INTO users(name,
-                                      lastname, 
+                                      lastname,
                                       age) 
                     VALUES (?, ?, ?);
                 """),

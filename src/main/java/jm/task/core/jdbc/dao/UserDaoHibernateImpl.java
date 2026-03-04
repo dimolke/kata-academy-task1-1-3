@@ -68,8 +68,7 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void createUsersTable() {
-        try {
-            var session = Util.getSessionFactory().openSession();
+        try( var session = Util.getSessionFactory().openSession();){
             session.beginTransaction();
 
             session.createNativeQuery(Queries.CREATE_TABLE.getQuery())
@@ -85,7 +84,7 @@ public class UserDaoHibernateImpl implements UserDao {
     @Override
     public void dropUsersTable() {
         try (var session = Util.getSessionFactory()
-                    .openSession();) {
+                    .openSession()) {
             session.beginTransaction();
             session.createNativeQuery(Queries.DROP_SQL.getQuery())
                     .executeUpdate();
@@ -99,7 +98,7 @@ public class UserDaoHibernateImpl implements UserDao {
     @Override
     public void saveUser(String name, String lastName, byte age) {
         try (var session = Util.getSessionFactory()
-                    .openSession();) {
+                    .openSession()) {
             session.beginTransaction();
 
             User user = new User(name,lastName,age);
@@ -115,7 +114,7 @@ public class UserDaoHibernateImpl implements UserDao {
     @Override
     public void removeUserById(long id) {
         try(var session = Util.getSessionFactory()
-                .openSession();) {
+                .openSession()) {
             session.beginTransaction();
 
             User user = session.get(User.class, id);
